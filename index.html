@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Solutions | Внедрение аналитики для бизнеса</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1e40af; /* глубокий синий */
+            --color-primary-light: #3b82f6;
+            --color-secondary: #0f766e; /* холодный teal */
+            --color-dark: #1e293b;
+            --color-gray: #64748b;
+            --color-light: #f1f5f9;
+            --color-white: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--color-dark);
+            background-color: var(--color-white);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== ШАПКА ===== */
+        header {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #334155 100%);
+            color: var(--color-white);
+            padding: 60px 0 80px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--color-white);
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: var(--color-primary-light);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: #cbd5e1;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary-light);
+            color: white;
+            padding: 16px 40px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== СЕКЦИЯ ПРОБЛЕМ ===== */
+        .problems-section {
+            padding: 100px 0;
+            background-color: var(--color-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 70px;
+            color: var(--color-dark);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--color-secondary);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .problem-number {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: var(--color-primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .problem-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+
+        .problem-desc {
+            color: var(--color-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ===== СЕКЦИЯ РЕШЕНИЯ ===== */
+        .solutions-section {
+            padding: 100px 0;
+            background-color: var(--color-white);
+        }
+
+        .solution-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--color-gray);
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.7;
+        }
+
+        .solution-highlight {
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        .solutions-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .solution-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .solution-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .solution-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background-color: #e0f2fe;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .solution-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+
+        .solution-content p {
+            color: var(--color-gray);
+            line-height: 1.7;
+        }
+
+        /* ===== СЕКЦИЯ КОНТАКТОВ ===== */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+
+        .contact-info {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            display: inline-block;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-label {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            color: var(--color-white);
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: var(--color-primary-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-value a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
+        /* ===== ФУТЕР ===== */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .solution-item {
+                flex-direction: column;
+            }
+            
+            .solution-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .contact-info {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ШАПКА -->
+    <header>
+        <div class="container">
+            <div class="logo">Data<span>Solutions</span></div>
+            <p class="tagline">Внедрение аналитики и автоматизации для бизнеса</p>
+            <h1 class="hero-title">Превращаем данные в деньги и сэкономленное время</h1>
+            <p class="hero-subtitle">Решаем ключевые бизнес-проблемы с помощью аналитики, дашбордов и автоматизации. Не навыки, а результат.</p>
+            <a href="#contact" class="cta-button">Обсудить вашу задачу</a>
+        </div>
+    </header>
+
+    <!-- СЕКЦИЯ ПРОБЛЕМ -->
+    <section class="problems-section" id="problems">
+        <div class="container">
+            <h2 class="section-title">Какие проблемы бизнеса мы решаем</h2>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-number">1</div>
+                    <h3 class="problem-title">«Не знаем, откуда приходят клиенты и какие каналы прибыльны»</h3>
+                    <p class="problem-desc">Рекламный бюджет тратится впустую, потому что нельзя точно оценить ROI каждого канала привлечения.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-number">2</div>
+                    <h3 class="problem-title">«Теряем клиентов на сайте, не понимаем почему»</h3>
+                    <p class="problem-desc">Высокий процент отказов, низкая конверсия, но нет данных о поведении пользователей для принятия решений.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-number">3</div>
+                    <h3 class="problem-title">«Менеджеры тратят часы на рутинные отчеты»</h3>
+                    <p class="problem-desc">Ценные сотрудники заняты ручным сбором данных вместо работы с клиентами и стратегией.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-number">4</div>
+                    <h3 class="problem-title">«Принимаем решения на ощупь, а не на данных»</h3>
+                    <p class="problem-desc">Стратегические решения основываются на интуиции, а не на актуальных метриках и трендах.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-number">5</div>
+                    <h3 class="problem-title">«Разрозненные данные в CRM, рекламе, сайте»</h3>
+                    <p class="problem-desc">Информация фрагментирована по системам, что делает невозможным целостный анализ бизнеса.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ РЕШЕНИЙ -->
+    <section class="solutions-section" id="solutions">
+        <div class="container">
+            <h2 class="section-title">Как мы это решаем</h2>
+            <p class="solution-intro">Мы не просто «настраиваем отчеты». Мы <span class="solution-highlight">внедряем систему</span>, которая закрывает конкретные бизнес-проблемы и начинает приносить ценность с первого дня.</p>
+            
+            <div class="solutions-list">
+                <div class="solution-item">
+                    <div class="solution-icon">→</div>
+                    <div class="solution-content">
+                        <h3>Аналитика трафика и конверсий</h3>
+                        <p>Настраиваем сквозную аналитику: от рекламного клика до сделки. Строим дашборды, которые показывают ROI каждого канала, LTV клиента и точки роста. Инструменты: Яндекс.Метрика, Google Analytics, Power BI, собственные решения.</p>
+                    </div>
+                </div>
+                
+                <div class="solution-item">
+                    <div class="solution-icon">→</div>
+                    <div class="solution-content">
+                        <h3>Веб-аналитика и юзабилити</h3>
+                        <p>Внедряем анализ поведения на сайте (карты кликов, скроллинг, формы). Выявляем, где и почему пользователи уходят, и даем конкретные рекомендации по улучшению конверсии.</p>
+                    </div>
+                </div>
+                
+                <div class="solution-item">
+                    <div class="solution-icon">→</div>
+                    <div class="solution-content">
+                        <h3>Автоматизация отчетности</h3>
+                        <p>Разрабатываем Python-скрипты и конвейеры данных, которые автоматически собирают, обрабатывают и визуализируют отчеты. Высвобождаем до 20 часов в месяц на каждого сотрудника.</p>
+                    </div>
+                </div>
+                
+                <div class="solution-item">
+                    <div class="solution-icon">→</div>
+                    <div class="solution-content">
+                        <h3>Дашборды для принятия решений</h3>
+                        <p>Создаем единые панели управления (Power BI, Redash, Superset) с ключевыми метриками бизнеса в реальном времени. Руководитель видит всю картину в одном окне.</p>
+                    </div>
+                </div>
+                
+                <div class="solution-item">
+                    <div class="solution-icon">→</div>
+                    <div class="solution-content">
+                        <h3>Интеграция данных (ELT)</h3>
+                        <p>Объединяем данные из CRM (Bitrix24, amoCRM), 1С, сайта, рекламных кабинетов в единое хранилище. Превращаем разрозненные источники в согласованную систему для глубокого анализа.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ КОНТАКТОВ -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="contact-title">Готовы, чтобы ваши данные работали на вас?</h2>
+            <p class="contact-subtitle">Обсудим вашу задачу, проанализируем текущую ситуацию и предложим решение. Пишите в удобный мессенджер или на почту.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">Телефон / Telegram / WhatsApp</div>
+                    <div class="contact-value">+7 (953) 475-94-77</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Электронная почта</div>
+                    <div class="contact-value"><a href="mailto:igor.kholm@bk.ru">igor.kholm@bk.ru</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">GitHub с примерами кода</div>
+                    <div class="contact-value"><a href="https://github.com/your-profile" target="_blank">github.com/your-profile</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="container">
+            <p>© DataSolutions 2023. Санкт-Петербург. Решаем бизнес-задачи с помощью данных.</p>
+        </div>
+    </footer>
+</body>
+</html>
